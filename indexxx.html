@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Nolan Memorial School - Kampala, Uganda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-blue: #1e3a8a;
+            --accent-gold: #f59e0b;
+            --light-blue: #3b82f6;
+            --dark-blue: #0f2a6b;
+            --light-gray: #f8fafc;
+            --dark-gray: #334155;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-gold);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .logo-badge i:first-child {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+        
+        .logo-badge i:last-child {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--primary-blue);
+        }
+        
+        /* Hamburger Menu - TOP RIGHT */
+        .hamburger-menu-container {
+            position: relative;
+        }
+        
+        .hamburger-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-btn:hover {
+            color: var(--accent-gold);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--white);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            min-width: 200px;
+            display: none;
+            z-index: 1001;
+            overflow: hidden;
+        }
+        
+        .dropdown-menu.active {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            color: var(--dark-gray);
+            text-decoration: none;
+            border-bottom: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .dropdown-menu a i {
+            width: 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.9)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 20px 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .motto {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-style: italic;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        /* Contact Bar */
+        .contact-bar {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-item i {
+            color: var(--accent-gold);
+        }
+        
+        /* Mission Section */
+        .mission-section {
+            padding: 80px 20px;
+            background-color: var(--white);
+        }
+        
+        .mission-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .mission-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .mission-content {
+            background-color: #f0f9ff;
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-gold);
+        }
+        
+        .mission-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 20px;
+            background-color: var(--light-gray);
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .blog-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .blog-article {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .article-title {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 10px;
+        }
+        
+        .article-subtitle {
+            color: var(--light-blue);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-left: 4px solid var(--primary-blue);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .cta-box h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .footer-badge {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-gold), #fbbf24);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .footer-motto {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+        }
+        
+        .social-section h4, .quick-links h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+        
+        .whatsapp:hover { background-color: #25D366; }
+        .instagram:hover { background-color: #E4405F; }
+        .youtube:hover { background-color: #FF0000; }
+        .twitter:hover { background-color: #1DA1F2; }
+        
+        .quick-links ul {
+            list-style: none;
+        }
+        
+        .quick-links li {
+            margin-bottom: 10px;
+        }
+        
+        .quick-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-links a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+        
+        /* Location - Only at Bottom */
+        .location-section {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .location-section p {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .location-icon {
+            color: var(--accent-gold);
+            margin-right: 10px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 10px 15px;
+            }
+            
+            .hero {
+                padding: 150px 15px 80px;
+            }
+            
+            .motto {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .mission-section, .blog-section {
+                padding: 60px 15px;
+            }
+            
+            .mission-content, .blog-article {
+                padding: 25px;
+            }
+            
+            .article-title {
+                font-size: 1.6rem;
+            }
+            
+            .dropdown-menu {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                left: 0;
+                border-radius: 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Hamburger Menu -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-badge">
+                    <i class="fas fa-pen-fancy"></i>
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>St. Nolan Memorial School</h1>
+                </div>
+            </div>
+            
+            <!-- Hamburger Menu at TOP RIGHT -->
+            <div class="hamburger-menu-container">
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#home"><i class="fas fa-home"></i> Home</a>
+                    <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="#blog"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2 class="motto">"Education is the foundation"</h2>
+            <p class="tagline">Excellence in Education Since 1995 | Kampala, Uganda</p>
+            <a href="#about" class="btn">Discover Our Mission</a>
+        </div>
+    </section>
+
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>Tel: +256746560891</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email: nolanigo9@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-fax"></i>
+                    <span>Fax: +256746560891</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <section class="mission-section" id="about">
+        <div class="container">
+            <div class="mission-header">
+                <h2>Our Mission & Vision</h2>
+            </div>
+            <div class="mission-content">
+                <p>At St. Nolan Memorial School, we are committed to providing a transformative educational experience that empowers every student to reach their highest potential. Our mission is built on the belief that education is not merely about academic achievement, but about building character, fostering creativity, and developing responsible global citizens.</p>
+                <p>We strive to create an inclusive learning environment where students from all backgrounds can thrive, guided by our dedicated faculty who employ innovative teaching methodologies tailored to individual learning styles. Our holistic approach ensures that each student develops intellectually, emotionally, socially, and physically.</p>
+                <p>Through our comprehensive curriculum and emphasis on community engagement, we prepare students to face the challenges of a rapidly changing world with confidence, resilience, and a lifelong love for learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="blog-header">
+                <h2>Educational Insights & Digital Transformation</h2>
+                <p>Expert perspectives on modern education and the power of digital presence</p>
+            </div>
+            
+            <article class="blog-article">
+                <h3 class="article-title">The Digital Imperative: Why Every School in Uganda Needs a Professional Website Now</h3>
+                <div class="article-subtitle">Transforming Educational Outreach in the Digital Age</div>
+                
+                <div class="article-content">
+                    <p>Imagine this: A parent in Kampala is searching for the perfect school for their child. Where do they begin? Not with phone calls or newspaper ads. They <strong>search online</strong>. In today's connected world, your school's first impression is digital, and without a professional website, you're invisible to the very families you want to reach.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>The Harsh Truth:</strong> A school without a website in 2023 is like a library without books. It may still function, but it cannot fulfill its potential or reach those who need it most.</p>
+                    </div>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 25px 0 15px;">Your 24/7 Digital Ambassador</h4>
+                    <p>While your teachers and staff go home at night, your website works around the clock. It's your permanent digital ambassador, showcasing your achievements, values, and unique educational approach to prospective families, partners, and the global community.</p>
+                    
+                    <p>At St. Nolan Memorial School, our website has become more than just an information portal. It's a dynamic platform that has:</p>
+                    
+                    <ul style="margin-left: 20px; margin-bottom: 20px;">
+                        <li style="margin-bottom: 10px;"><strong>Increased enrollment inquiries by 40%</strong> within six months of launch</li>
+                        <li style="margin-bottom: 10px;">Streamlined parent-teacher communication, reducing administrative workload</li>
+                        <li style="margin-bottom: 10px;">Attracted partnerships with educational organizations across East Africa</li>
+                        <li style="margin-bottom: 10px;">Showcased student achievements to a global audience</li>
+                    </ul>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 25px 0 15px;">Building Trust Through Digital Transparency</h4>
+                    <p>Credibility in education is paramount. When parents see a modern, well-maintained website, they immediately perceive your institution as forward-thinking, organized, and transparent. This digital trust translates into real-world confidence in your educational capabilities.</p>
+                    
+                    <p>Your website allows you to:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 20px;">
+                        <li style="margin-bottom: 10px;">Showcase your facilities, faculty qualifications, and student achievements</li>
+                        <li style="margin-bottom: 10px;">Share your educational philosophy and values clearly</li>
+                        <li style="margin-bottom: 10px;">Provide easy access to academic calendars, event schedules, and important updates</li>
+                        <li style="margin-bottom: 10px;">Demonstrate your commitment to modern education through technology integration</li>
+                    </ul>
+                </div>
+            </article>
+            
+            <article class="blog-article">
+                <h3 class="article-title">Beyond Brochures: How a Website Becomes Your School's Central Nervous System</h3>
+                <div class="article-subtitle">Creating Community, Simplifying Administration, Enhancing Education</div>
+                
+                <div class="article-content">
+                    <p>Think of your ideal school community: engaged parents, motivated students, inspired teachers, all connected and working toward common goals. Now imagine having a tool that strengthens every one of these connections daily. That tool is a professional website.</p>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 25px 0 15px;">The Three Pillars of School Website Success</h4>
+                    
+                    <p><strong>1. Community Building:</strong> Your website becomes the digital town square where school life thrives. From photo galleries of sports days to highlights of academic achievements, it creates a shared identity that extends beyond school walls.</p>
+                    
+                    <p><strong>2. Administrative Efficiency:</strong> Streamline inquiries, applications, and communications. Reduce phone call volumes by 60% while providing better, more consistent information. Automated systems mean your staff spends less time on repetitive tasks and more time where it matters: with students.</p>
+                    
+                    <p><strong>3. Educational Enhancement:</strong> Share resources, homework assignments, and learning materials. Create portals for students and parents. In an era where digital literacy is as important as traditional literacy, your website becomes both a tool and a teaching moment.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Real Impact:</strong> Schools with professional websites report 35% higher parent satisfaction, 28% better student retention, and significantly improved teacher-parent communication. The numbers don't lie: digital presence drives educational excellence.</p>
+                    </div>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 25px 0 15px;">Your Competitive Edge in a Crowded Educational Landscape</h4>
+                    <p>Let's be honest: the educational sector in Uganda is competitive. Parents have choices. Other schools are already online, showcasing their strengths, sharing their successes, and enrolling new students. Every day you delay is a day you fall behind.</p>
+                    
+                    <p>A professional website gives you:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 20px;">
+                        <li style="margin-bottom: 10px;"><strong>Market dominance</strong> in your local area</li>
+                        <li style="margin-bottom: 10px;">The ability to <strong>attract and retain top teaching talent</strong></li>
+                        <li style="margin-bottom: 10px;">Opportunities for <strong>partnerships and funding</strong> from NGOs and educational organizations</li>
+                        <li style="margin-bottom: 10px;">A platform to <strong>tell your unique story</strong> in a way no brochure ever could</li>
+                    </ul>
+                </div>
+            </article>
+            
+            <div class="cta-box" id="contact">
+                <h3>Ready to Transform Your School's Digital Presence?</h3>
+                <p style="margin-bottom: 20px; opacity: 0.95;">Don't let another academic year pass with your school invisible online. The transition is simpler than you think, and the benefits begin immediately.</p>
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">Join St. Nolan Memorial School and hundreds of other Ugandan institutions who have embraced the digital future of education.</p>
+                <a href="mailto:nolanigo9@gmail.com?subject=School Website Inquiry" class="btn" style="background-color: var(--accent-gold); color: var(--white);">
+                    <i class="fas fa-laptop-code"></i> Start Your Digital Transformation Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-badge">
+                        <i class="fas fa-pen-fancy"></i>
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>St. Nolan Memorial School</h3>
+                    <p class="footer-motto">"Education is the foundation"</p>
+                    <p>Providing excellence in education since 1995</p>
+                </div>
+                
+                <div class="social-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="https://wa.me/256746560891" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com/nolanislockedin" target="_blank" class="social-icon instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" target="_blank" class="social-icon youtube" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" target="_blank" class="social-icon twitter" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="quick-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#blog">Blog & Insights</a></li>
+                        <li><a href="#contact">Contact & Inquiries</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Location Only at Bottom -->
+            <div class="location-section">
+                <p><i class="fas fa-map-marker-alt location-icon"></i> <strong>Located in:</strong> Kampala, Uganda</p>
+                <p style="font-size: 0.95rem; opacity: 0.9;">Serving the community with educational excellence since 1995</p>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 St. Nolan Memorial School. All rights reserved.</p>
+                <p style="margin-top: 5px;">Tel: +256746560891 | Email: nolanigo9@gmail.com | Fax: +256746560891</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            
+            // Toggle dropdown menu
+            hamburgerBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!dropdownMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    dropdownMenu.classList.remove('active');
+                }
+            });
+            
+            // Close dropdown when clicking a link
+            dropdownMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    dropdownMenu.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add current year to copyright
+            const yearSpan = document.querySelector('.current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
